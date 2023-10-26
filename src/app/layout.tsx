@@ -3,10 +3,15 @@ import type { Metadata } from "next";
 import Header from "@/layouts/header/Header";
 import Sidebar from "@/layouts/siderBar/Sidebar";
 import DrawingArea from "@/layouts/drawingArea/DrawingArea";
+import { Container } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "mini-canvas",
   description: "on canvas, design your own paper",
+};
+
+const containerStyle = {
+  display: "flex",
 };
 
 export default function RootLayout({
@@ -18,10 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <div className="flex">
+        <Container disableGutters sx={containerStyle}>
           <Sidebar />
           <DrawingArea />
-        </div>
+        </Container>
       </body>
     </html>
   );
