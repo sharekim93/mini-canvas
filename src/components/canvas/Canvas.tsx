@@ -4,9 +4,11 @@ import React from "react";
 import {
   Stage as KonvaStage,
   Layer as KonvaLayer,
-  Star as KonvaStar,
-  KonvaNodeComponent,
+  Rect as KonvaRect,
 } from "react-konva";
+import { useRecoilValue } from "recoil";
+import { canvasNodeArrState, useSsrComplectedState } from "@/store/atoms";
+import { Shape } from "@/interface/interface";
 
 const stageProps = {
   container: "drawingPaper",
@@ -14,23 +16,24 @@ const stageProps = {
   height: 500,
 };
 
-const starExampleProps = {
-  x: 100,
-  y: 200,
-  numPoints: 5,
-  innerRadius: 70,
-  outerRadius: 70,
-  fill: "yellow",
-  stroke: "black",
-  strokeWidth: 4,
-  draggable: true,
-};
-
 const Canvas = () => {
+  const canvasNodeArr = useRecoilValue(canvasNodeArrState);
+
+  const setSsrCompleted = useSsrComplectedState();
+  React.useEffect(setSsrCompleted, [setSsrCompleted]);
+  React.useEffect(() => {
+    console.log(canvasNodeArr);
+  }, [canvasNodeArr]);
+
   return (
     <KonvaStage {...stageProps}>
       <KonvaLayer>
-        <KonvaStar {...starExampleProps} />
+        {canvasNodeArr &&
+          canvasNodeArr.map((node: Shape) => {
+            return node.type === "Rect" ? (
+              <KonvaRect key={node.id} {...node} />
+            ) : null;
+          })}
       </KonvaLayer>
     </KonvaStage>
   );

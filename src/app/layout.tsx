@@ -1,9 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
+
+import { Container } from "@mui/material";
+
 import Header from "@/layouts/header/Header";
 import Sidebar from "@/layouts/siderBar/Sidebar";
 import DrawingArea from "@/layouts/drawingArea/DrawingArea";
-import { Container } from "@mui/material";
+import RecoilRootProvider from "@/utils/RecoilRootProvider";
 
 export const metadata: Metadata = {
   title: "mini-canvas",
@@ -22,11 +25,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <Container disableGutters sx={containerStyle}>
-          <Sidebar />
-          <DrawingArea />
-        </Container>
+        <RecoilRootProvider>
+          <Header />
+          <Container disableGutters sx={containerStyle}>
+            <Sidebar />
+            <DrawingArea />
+          </Container>
+        </RecoilRootProvider>
       </body>
     </html>
   );

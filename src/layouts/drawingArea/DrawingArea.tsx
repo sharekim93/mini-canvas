@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import dynamic from "next/dynamic";
+
 import { Box, Paper } from "@mui/material";
 
 const Canvas = dynamic(() => import("@/components/canvas/Canvas"), {
