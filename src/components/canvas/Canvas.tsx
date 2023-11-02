@@ -19,11 +19,9 @@ const stageProps = {
 const Canvas = () => {
   const canvasNodeArr = useRecoilValue(canvasNodeArrState);
 
+  // SSR 로딩이 완료되면 recoil-persist 와 동기화
   const setSsrCompleted = useSsrComplectedState();
   React.useEffect(setSsrCompleted, [setSsrCompleted]);
-  React.useEffect(() => {
-    console.log(canvasNodeArr);
-  }, [canvasNodeArr]);
 
   return (
     <KonvaStage {...stageProps}>
