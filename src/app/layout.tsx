@@ -6,7 +6,8 @@ import { Container } from "@mui/material";
 import Header from "@/layouts/header/Header";
 import Sidebar from "@/layouts/siderBar/Sidebar";
 import DrawingArea from "@/layouts/drawingArea/DrawingArea";
-import RecoilRootProvider from "@/utils/RecoilRootProvider";
+import RecoilRootProvider from "@/components/recoilRootProvider/RecoilRootProvider";
+import ToastProvider from "@/components/toastProvider/ToastProvider";
 
 export const metadata: Metadata = {
   title: "mini-canvas",
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <RecoilRootProvider>
+          <ToastProvider />
           <Header />
           <Container disableGutters sx={containerStyle}>
             <Sidebar />
