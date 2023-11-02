@@ -4,8 +4,8 @@ import { type } from "os";
 export interface Shape {
   id: string;
   type: string;
-  x: number;
-  y: number;
+  x?: number;
+  y?: number;
 }
 
 export class Rectangle implements Shape {
@@ -15,7 +15,8 @@ export class Rectangle implements Shape {
   y;
   width: number;
   height: number;
-  fill: string;
+  stroke?: string;
+  fill?: string;
   draggable: boolean;
 
   constructor() {
@@ -25,7 +26,7 @@ export class Rectangle implements Shape {
     this.y = 100;
     this.width = 100;
     this.height = 100;
-    this.fill = "";
+    this.stroke = "fff";
     this.draggable = true;
   }
 }
