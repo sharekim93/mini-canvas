@@ -25,7 +25,7 @@ export class Rectangle implements Shape {
     this.y = 100;
     this.width = 100;
     this.height = 100;
-    this.fill = "ffffff";
+    this.fill = "";
     this.draggable = true;
   }
 }
