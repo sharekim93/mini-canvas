@@ -6,6 +6,7 @@ import Canvas from "@/components/canvas/Canvas";
 const Home = () => {
   const containerStyle = {
     display: "flex",
+    position: "fixed",
   };
 
   return (
